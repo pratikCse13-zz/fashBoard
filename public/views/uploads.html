@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html ng-app="uploadMod">
+<head>
+	<title></title>
+
+</head>
+<body ng-controller="uploadController">
+<form action="/uploads" method="post" enctype="multipart/form-data">
+<input type="file" accept="image/*" name="imageuploader" id="upload" value="">
+<input type="submit" value="submit"></input>
+<input type="file" accept="image/*" name="imageuploader2" id="upload2" value="">
+<input type="submit" value="submit"></input>
+</form>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<script src="/javascript/uploadScript.js"></script>
+</body>
+</html>

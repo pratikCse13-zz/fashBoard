@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html style="width: 100%; height: 100%" ng-app="homeMod">
+<head>
+
+    <title></title>
+
+    <!-- BootStrap CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  
+    <!-- Bootstrap CDN 2 -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+    <!-- Bootstrap social CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-social/5.0.0/bootstrap-social.css">
+
+    <!-- font awesome CDN-->
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+
+    <!-- CSS file -->
+    <link rel="stylesheet" href="/stylesheets/homePageStyles.css">
+
+</head>
+<body style="width: 100%; height: 100%" ng-controller="homeCtrl">
+
+    <!-- navigation bar -->
+    <nav class="navbar navigationBar">
+  	   
+        <div class="container-fluid">
+            <!-- Navigation Logo-->
+            <div class="navbar-header logo">
+                <a class="navbar-brand" href="#">
+        	      <img alt="Brand" src="">
+      		      </a>
+          	</div>
+
+            <!-- Login -->
+            <a class="navLoginLink" data-animation="am-fada-and-slide-top" data-toggle="modal" data-target= "#signupModal" >LOGIN</a>  
+    
+            <!-- Homepage Navigation -->   
+            <div class="navlist">
+                  <a class="navLink underlineAnim">ABOUT</a>
+                  <a class="navLink underlineAnim">QUERIES</a>  
+            </div>
+            
+        </div>
+    </nav><!-- navigation ending-->
+  		
+    <!-- Background -->
+    <div style="position: absolute; top: 0px; left: 0px; background-attachment: fixed; margin: 0px; background-size: cover; width: 100%; height: 100%; background-image: url('/images/homepage17.jpg'); background-repeat: no-repeat; z-index: 0; text-align: center"><!-- background ending -->
+
+        <!-- homepage part 1-->
+        <div style="background-color: rgba(0,0,0,0.7); height: 100%; width:100%">
+          
+            <div style=" position: relative; top: 250px"> 
+                <div style="color: #FFFFFF; z-index: 70; font-size: 50px">Catalogue to your dream designs</div>
+                <small style="color: white; font-size: 20px">publish your own creations to the world in seconds..</small><br><br>
+                <button class="btn btn-success btn-lg">Show me</button>
+            </div>
+
+        </div><!-- homepage part 1 ending -->
+ 
+    </div><!-- background ending -->
+
+
+    <!-- Login Modal -->
+    <div class="modal fade" id="loginModal" style="padding-right: 5px; padding-left: 5px">
+        <div class="modal-body" style="width: 100%; padding-top: 0px; padding-left: 10px; padding-right: 10px">
+            <!-- close button -->
+            <a class="fa fa-times fa-2x" aria-hidden="true" data-dismiss="modal" style="z-index: 50; position: relative; top: 2px; left: 150px">
+            </a>
+            <br>
+            <br>
+            <br>
+            <div style="font-size: 20px"><b>Login to your account</b></div>
+            <br>
+            <input type="text" placeholder="username" style="padding: 20px;height : 30px; margin: 3px; line-height: 10px;border: 2px solid #CECECE; background-color: #CECECE; border-radius: 3px"></input>
+            <br>
+            <input type="text" placeholder="password" style="padding: 20px;height : 30px; margin: 3px; line-height: 10px;border: 2px solid #CECECE; background-color: #CECECE; border-radius: 3px"></input>
+            <br>
+            <div style="display: inline-block;">
+                <input type="checkbox" checked="checked" style="position:relative; left: -60px; display: inline-block; color: white; float: left; margin-left: 10px">
+                <label style="color: #000000; font-weight: 100; position: relative; left: -57px">Remember me</label>
+            </div>
+            <br>
+            <button class="btn btn-success btn-lg" style="width: 70%; padding: 17.5px; height : 45px; margin: 3px; line-height: 10px; color: white; font-family: sans-serif;">Log In</button>
+            <br>
+            <a style="float: right; color: white; margin: 10px; line-height: 10px; padding: 10px">Recover Password</a>
+            Don't Have an Account?
+            <a style="color: white; text-indent: center" >Sign Up</a>
+        </div>  
+    </div><!-- login modal ending -->
+
+    <!-- Signup Modal -->
+    <div class="modal fade" id="signupModal">
+      
+        
+        <!-- modal body -->
+        <div class="modal-body">
+
+            <!-- close button -->
+            <a class="fa fa-times fa-2x" aria-hidden="true" data-dismiss="modal" style="z-index: 50; position: absolute; top: 2px; right: 2px">
+            </a>
+
+            <h1>Create your chat account!</h1>
+
+            <!-- horizontal line -->    
+            <hr style="color: #CECECE; size : 3px; width: 80%"> 
+
+            <h3 style="line-height:15px;font-size:15px">Come join the chat community! Let's create your account. Already have one?
+            <a href="" ng-click="changeModal()" style="color: #A1D2F6">Log in</a>
+            </h3>
+
+            <div style="" class="row" style="margin: 50px">
+                <!-- signup div-->
+                <div style="display: inline-block; width: 50%; border-right: 1px solid #CECECE; padding-left: 20px; padding-right: 20px" class="col-md-4">
+                    <input style="padding: 20px;height : 30px; width: 80%;margin: 3px; line-height: 10px; border: 2px solid #CECECE; border-radius: 3px" type="text" placeholder="Name"></input><br>
+                    <input style="padding: 20px;height : 30px; width: 80%;margin: 3px; line-height: 10px; border: 2px solid #CECECE; border-radius: 3px" type="text" placeholder="Username"></input><br>
+                    <input style="padding: 20px; height : 30px; width: 80%;margin: 3px; line-height: 10px; border: 2px solid #CECECE; border-radius: 3px" type="text" placeholder="Password"></input><br>
+                    <button class="btn btn-block" style="background-color: #7AB42C; z-index: 100; line-height: 10px; padding-top: 20px; padding-bottom: 20px; height : 50px; width: 80%; font : sans-serif; margin: 3px; border: 2px solid white;text-align: center; border-radius: 10px;font-weight: 800; color: white; margin-left: 30px" ng-click="">Sign Up!</button>
+                    <div style="position: absolute; width: 80%">
+                        <span style="position: absolute; left: 30px; top: 0px">
+                        <input type="checkbox" style="font-size: 0.8em; margin-left: 0px" checked="checked"></input>
+                        <label style=" padding-left: 0px">Keep Me Logged In</label>
+                        </span>
+                    </div>
+                    </div>
+
+                <!-- social div-->
+                <div style="display: inline-block; width: 50%; border-left: 1px solid #CECECE;align-content: center; padding-left: 20px; padding-right: 20px" class="col-md-8">
+                    <div style="margin: 10px; margin-left: 40px; width: 65%">Or signup with your social account</div> 
+                        <a class="btn btn-block btn-social btn-google" style="width: 65%; margin: 10px; margin-left: 40px">
+                        <span class="fa fa-google"></span> Sign in with Google
+                        </a>
+                        <a class="btn btn-block btn-social btn-facebook" style="width: 65%; margin: 10px; margin-left: 40px">
+                        <span class="fa fa-facebook"></span> Sign in with Facebook
+                        </a>
+                        <a class="btn btn-block btn-social btn-twitter" style="width: 65%; margin: 10px; margin-left: 40px">
+                        <span class="fa fa-twitter"></span> Sign in with Twitter
+                        </a>
+                    </div>
+                </div>
+                <br><br>  
+            </div>
+        </div><!-- signup modal body ending -->
+    </div><!-- signup modal ending --> 
+
+    <!-- Jquery CDN -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+
+    <!-- Bootstrap JS CDN -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+    <!-- AngularJs CDN -->
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+
+   
+    <!-- angular js file -->
+    <script src="/javascript/homepage.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,125 @@
+.navigationBar {
+	height: 75px; 
+	width: 100%; 
+	background-color: rgb(0,0,0); 
+	margin: 0px; 
+	z-index: 99; 
+	position: fixed; 
+	top: 0px; 
+	left: 0px;
+}
+
+.modal {
+	z-index: 100;
+}
+.modal-backdrop {
+	z-index:99;
+}
+
+.modal#signupModal {
+	position: fixed;
+	border: 3px solid #CECECE;
+	border-radius: 10px; 
+	background-color: white; 
+	text-align: center;
+	padding: 5px; 
+	width: 50%;
+	padding-top: 0px;
+	height: 75%;  
+	left: 350px; 
+	top : 15px;
+	margin-top: 50px;   
+}
+
+.modal#loginModal {
+	position: fixed;
+	border: 3px solid #CECECE;
+	border-radius: 10px; 
+	background-color: white; 
+	text-align: center;
+	padding: 1px; 
+	width: 25%;
+	padding-top: 0px;
+	height: 75%;  
+	left: 500px; 
+	top : 15px;
+	margin-top: 50px;
+}
+
+.logo {
+	height: 75px;
+}
+.navLink {
+	margin: 10px;
+	border-bottom: 0%;
+	font-family: Gotham SSm;
+	position: relative;
+	color: white;
+	font-size: 20px;
+	font-weight: 0;
+	padding: 3px;	
+	line-height: 15px;
+}
+
+.navLoginLink {
+	border: 1px solid white; 
+	padding: 10px;	
+	margin: 10px;
+	border-bottom: 0%;
+	font-family: Gotham SSm;
+	position: relative;
+	color: white;
+	font-size: 20px;
+	font-weight: 0;	
+	line-height: 75px;
+}
+
+.navLoginLink:hover {
+	color: white;
+	text-decoration: none;
+}
+
+.navLink:hover {
+
+	color: white;
+	text-decoration: none;
+}
+
+.navLink::after {
+	content: '';
+	position: absolute;
+	width: 0%;
+	left: 0;
+	bottom: 0;
+	border-bottom: 2px solid white;
+	transition: 0.4s;
+}
+
+.navLink:hover::after {
+	width : 100%;
+}
+
+.background {
+	background-size: 100% 100%; 
+	position: absolute; 
+	top: 0px; 
+	left: 0px; 
+	background-attachment: fixed; 
+	margin: 0px; 
+	width: 100%; 
+	height: 100%; 
+	background-image: url('/images/backset.jpg'); 
+	background-repeat: no-repeat; 
+	z-index: 0;
+}
+
+.navlist {
+
+	float: right;
+	display: inline-block; 
+	background-color: rgba(0,0,0,0); 
+	width: 250px; 
+	height: 45px;
+	line-height: 75px;
+}
+

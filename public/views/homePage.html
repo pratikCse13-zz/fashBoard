@@ -34,7 +34,7 @@
           	</div>
 
             <!-- Login -->
-            <a class="navLoginLink" data-animation="am-fada-and-slide-top" data-toggle="modal" data-target= "#signupModal" >LOGIN</a>  
+            <a class="navLoginLink" data-animation="am-fada-and-slide-top" data-toggle="modal" data-target= "#loginModal" >LOGIN</a>  
     
             <!-- Homepage Navigation -->   
             <div class="navlist">
@@ -63,8 +63,8 @@
 
 
     <!-- Login Modal -->
-    <div class="modal fade" id="loginModal" style="padding-right: 5px; padding-left: 5px">
-        <div class="modal-body" style="width: 100%; padding-top: 0px; padding-left: 10px; padding-right: 10px">
+    <div class="modal fade" id="loginModal">
+        <div class="modal-body" style="width: 100%; padding-top: 0px;">
             <!-- close button -->
             <a class="fa fa-times fa-2x" aria-hidden="true" data-dismiss="modal" style="z-index: 50; position: relative; top: 2px; left: 150px">
             </a>
@@ -73,27 +73,37 @@
             <br>
             <div style="font-size: 20px"><b>Login to your account</b></div>
             <br>
-            <input type="text" placeholder="username" style="padding: 20px;height : 30px; margin: 3px; line-height: 10px;border: 2px solid #CECECE; background-color: #CECECE; border-radius: 3px"></input>
+            <form name="loginForm">
+            <input name="emailId" type="email" placeholder="email" style="padding: 20px;height : 30px; margin: 3px; line-height: 10px; background-color: #CECECE; border-radius: 3px" ng-model="emailId" ng-required="true"></input>
             <br>
-            <input type="text" placeholder="password" style="padding: 20px;height : 30px; margin: 3px; line-height: 10px;border: 2px solid #CECECE; background-color: #CECECE; border-radius: 3px"></input>
+            <div ng-show="loginForm.emailId.$touched && loginForm.emailId.$invalid">
+                <span style="color: red; text-align: center"><small>valid email is required</small></span>
+            </div>
+            <input name="password" type="password" placeholder="password" style="padding: 20px;height : 30px; margin: 3px; line-height: 10px; background-color: #CECECE; border-radius: 3px" ng-model="password" ng-required="true"></input>
             <br>
+            <div ng-show="loginForm.password.$touched && loginForm.password.$invalid">
+                <span style="color: red; text-align: center"><small>password is required</small></span>
+            </div>
             <div style="display: inline-block;">
-                <input type="checkbox" checked="checked" style="position:relative; left: -60px; display: inline-block; color: white; float: left; margin-left: 10px">
-                <label style="color: #000000; font-weight: 100; position: relative; left: -57px">Remember me</label>
+                <input type="checkbox" checked="checked" style="position:relative; left: -60px; display: inline-block; color: white; float: left; margin-left: 10px" ng-model="loginCookieToggle">
+                <label style="color: #000000; font-weight: 100; position: relative; left: -57px" >Remember me</label>
             </div>
             <br>
-            <button class="btn btn-success btn-lg" style="width: 70%; padding: 17.5px; height : 45px; margin: 3px; line-height: 10px; color: white; font-family: sans-serif;">Log In</button>
+            <button ng-click="processLogin()" class="btn btn-success btn-lg" style="width: 70%; padding: 17.5px; height : 45px; margin: 3px; line-height: 10px; color: white; font-family: sans-serif;" ng-disabled="loginForm.$invalid">Log In</button>
             <br>
-            <a style="float: right; color: white; margin: 10px; line-height: 10px; padding: 10px">Recover Password</a>
-            Don't Have an Account?
-            <a style="color: white; text-indent: center" >Sign Up</a>
+            <br>
+            <a style="font-color: black; margin: 10px; line-height: 10px; padding: 10px; text-decoration: none"><b>Recover my password</b></a>
+            <br>
+            <b>Don't Have an Account?</b>
+            <a ng-click="changeToSignup()" href="" style="font-color: black; text-indent: center" ><b>Create One</b></a>
+            </form>
+            <div class="alert alert-danger" role="alert" ng-show="showErrors">{{errors}}</div>
         </div>  
     </div><!-- login modal ending -->
 
     <!-- Signup Modal -->
     <div class="modal fade" id="signupModal">
-      
-        
+    
         <!-- modal body -->
         <div class="modal-body">
 
@@ -107,23 +117,38 @@
             <hr style="color: #CECECE; size : 3px; width: 80%"> 
 
             <h3 style="line-height:15px;font-size:15px">Come join the chat community! Let's create your account. Already have one?
-            <a href="" ng-click="changeModal()" style="color: #A1D2F6">Log in</a>
+            <a href="" ng-click="changeToLogin()" style="color: #A1D2F6">Log in</a>
             </h3>
 
             <div style="" class="row" style="margin: 50px">
                 <!-- signup div-->
                 <div style="display: inline-block; width: 50%; border-right: 1px solid #CECECE; padding-left: 20px; padding-right: 20px" class="col-md-4">
-                    <input style="padding: 20px;height : 30px; width: 80%;margin: 3px; line-height: 10px; border: 2px solid #CECECE; border-radius: 3px" type="text" placeholder="Name"></input><br>
-                    <input style="padding: 20px;height : 30px; width: 80%;margin: 3px; line-height: 10px; border: 2px solid #CECECE; border-radius: 3px" type="text" placeholder="Username"></input><br>
-                    <input style="padding: 20px; height : 30px; width: 80%;margin: 3px; line-height: 10px; border: 2px solid #CECECE; border-radius: 3px" type="text" placeholder="Password"></input><br>
-                    <button class="btn btn-block" style="background-color: #7AB42C; z-index: 100; line-height: 10px; padding-top: 20px; padding-bottom: 20px; height : 50px; width: 80%; font : sans-serif; margin: 3px; border: 2px solid white;text-align: center; border-radius: 10px;font-weight: 800; color: white; margin-left: 30px" ng-click="">Sign Up!</button>
+                    <form name="signUpForm" novalidate>
+                    <input name="name" style="padding: 20px;height : 30px; width: 80%;margin: 3px; line-height: 10px; border-radius: 3px" ng-model="name" type="text" placeholder="Name" ng-required="true"></input>
+                    <br>
+                    <div ng-show="signUpForm.name.$touched && signUpForm.name.$invalid">
+                      <span style="color: red; text-align: center"><small>Name is required</small></span>
+                    </div>
+                    <input name="emailId" style="padding: 20px;height : 30px; width: 80%;margin: 3px; line-height: 10px; border-radius: 3px" ng-model="emailId" type="email" placeholder="email id" ng-required="true"></input>
+                    <br>
+                    <div ng-show="signUpForm.emailId.$touched && signUpForm.emailId.$invalid">
+                      <span style="color: red; text-align: center"><small>Valid emailId is required</small></span>
+                    </div>
+                    <input name="password" style="padding: 20px; height : 30px; width: 80%;margin: 3px; line-height: 10px;  border-radius: 3px" ng-model="password" type="password" placeholder="password" ng-required="true"></input>
+                    <br>
+                    <div ng-show="signUpForm.password.$touched && signUpForm.password.$invalid">
+                      <span style="color: red; text-align: center"><small>Valid password is required</small></span>
+                    </div>
+                    <span ng-show="myForm.myName.$touched && myForm.myName.$invalid">The name is required.</span>
+                    <button class="btn btn-block" style="background-color: #7AB42C; z-index: 100; line-height: 10px; padding-top: 20px; padding-bottom: 20px; height : 50px; width: 80%; font : sans-serif; margin: 3px; border: 2px solid white;text-align: center; border-radius: 10px;font-weight: 800; color: white; margin-left: 30px" ng-click="processSignup()" ng-disabled="signUpForm.$invalid">Sign Up!</button>
+                    </form>
                     <div style="position: absolute; width: 80%">
                         <span style="position: absolute; left: 30px; top: 0px">
-                        <input type="checkbox" style="font-size: 0.8em; margin-left: 0px" checked="checked"></input>
+                        <input type="checkbox" style="font-size: 0.8em; margin-left: 0px" checked="checked" ng-model="signupCookieToggle"></input>
                         <label style=" padding-left: 0px">Keep Me Logged In</label>
                         </span>
                     </div>
-                    </div>
+                </div>
 
                 <!-- social div-->
                 <div style="display: inline-block; width: 50%; border-left: 1px solid #CECECE;align-content: center; padding-left: 20px; padding-right: 20px" class="col-md-8">
@@ -139,9 +164,12 @@
                         </a>
                     </div>
                 </div>
+                <br><br>
+                <div class="alert alert-danger" role="alert" ng-show="showErrors">{{errors}}</div>
                 <br><br>  
             </div>
         </div><!-- signup modal body ending -->
+        
     </div><!-- signup modal ending --> 
 
     <!-- Jquery CDN -->
@@ -153,7 +181,12 @@
     <!-- AngularJs CDN -->
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 
-   
+    <!-- AngularJs cookies CDN -->
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-cookies.min.js"></script>
+
+    <!-- AngularJs route CDN -->
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.min.js"></script>
+
     <!-- angular js file -->
     <script src="/javascript/homepage.js"></script>
 

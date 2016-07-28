@@ -1,50 +1,80 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title></title>
+	<head>
+	<title>
+		
+	</title>
 	<!-- BootStrap CDN -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  
+    <!-- Bootstrap CDN 2 -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
 
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
-	
+    <!-- Bootstrap social CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-social/5.0.0/bootstrap-social.css">
 
-	
-</head>
-	<body ng-app="feedMod">
-	<div class="row">
-	<div class="col-md-3">USER ACCOUNT</div>
-	<div class="col-md-9" ng-controller="feedCtrl">
-	USER FEEDS
-	<br>
-	<input type="text" style="width: 60% ; height: 50px ; padding: 10px; margin: 10px" ng-model="newFeed" placeholder="Whats on your mind today?"></input>
-	<br>
-	<button class="btn" style="height: 30px ; margin: 10px; line-height: 10px; margin: 5px ; padding: 10px" 
-	ng-click="postFeed()" 	>Post</button>
-	<div style="border: 1px solid black ; background-color: #F5F8FA ; margin: 10px ; padding: 10px ; height: 50px; width: 60%" ng-repeat="feeds in userFeeds.slice().reverse()">
-		<img ng-src="/images/{{feeds.image}}.jpg" style="float: left ; height: 100% ; width: 30px"></img>
-		<button ng-click="removeFeed(feeds)"><span class="glyphicon glyphicon-remove"  style="width: 5px ; height: 5px ; color: red ; float: right" ></span></button>
-		<div style="font-weight: 900 ; line-height: 10px ; padding: 3px ; width : 50%">{{feeds.name}}</div>
-		<div style="line-height: 10px ; line-height: 10px ; padding : 3px ; margin-bottom: 5px">
-		<div>{{feeds.feed}}</div>
-		<div style="font-size: 0.6em; float: right ; margin-bottom: 5px ;  padding-bottom: 10px"> {{prettyDate(feeds.postTime)}}</div>
+    <!-- font awesome CDN-->
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+
+    <!-- CSS file -->
+    <link rel="stylesheet" href="/stylesheets/userHome.css">
+	</head>
+
+	<body ng-app="feedMod" ng-controller="feedCtrl" style="height: 100%; width: 100%; background-color: #E9EBEE;">
+		<!-- naigation bar -->
+		<div ng-include="'navbar.html'">
 		</div>
-	</div>
-	</div>
-	</div>
+		<div class="container-fluid" style="height: 100%; width: 100%">
+		<div class="row" style="height: 100%; width: 100%">
+			<div class="col-md-3" style="background-color: white; border: 1px solid #DFE0E4; border-radius: 2px;height: 100%; margin: 10px;">
+				USER ACCOUNT
+			</div>
+			<div class="col-md-9">
+				<!-- new feed div -->
+				<div style="background-color: white; border-radius: 2px; border: 1px solid #DFE0E4">
+					USER FEEDS
+					<br>
+					<input type="text" style="width: 60% ; height: 50px ; padding: 10px; margin: 10px" ng-model="newFeed" placeholder="Whats on your mind today?"></input>
+					<br>
+					<button class="btn" style="height: 30px ; margin: 10px; line-height: 10px; margin: 5px ; padding: 10px" 
+					ng-click="postFeed()" 	>Post</button>
+				</div>
+				<!-- old feed div -->
+				<div style="border: 1px solid black ; background-color: #F5F8FA ; margin: 10px ; padding: 10px ; height: 50px; width: 60%" ng-repeat="feeds in userFeeds.slice().reverse()">
+					<img ng-src="/images/{{feeds.image}}.jpg" style="float: left ; height: 100% ; width: 30px"></img>
+					<button ng-click="removeFeed(feeds)"><span class="glyphicon glyphicon-remove"  style="width: 5px ; height: 5px ; color: red ; float: right" ></span></button>
+					<div style="font-weight: 900 ; line-height: 10px ; padding: 3px ; width : 50%">{{feeds.name}}</div>
+					<div style="line-height: 10px ; line-height: 10px ; padding : 3px ; margin-bottom: 5px">
+					<div>{{feeds.feed}}</div>
+					<div style="font-size: 0.6em; float: right ; margin-bottom: 5px ;  padding-bottom: 10px"> {{prettyDate(feeds.postTime)}}</div>
+				</div>
+			</div>
+		</div>
+		</div>
+
+		<!-- footer -->
+		<div ng-include="footer.html">			
+		</div>
+
 	</body>
 
 
 	<!-- Jquery CDN -->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
 
-	<!-- Bootstrap JS CDN -->
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS CDN -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 
-	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
-	<!-- AngularJs CDN --> 
+    <!-- AngularJs CDN -->
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 
-	<script src="/javascript/angular.js"></script>
+    <!-- AngularJs cookies CDN -->
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-cookies.min.js"></script>
 
-	
-</body>
+    <!-- AngularJs route CDN -->
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.min.js"></script>
+
+    <!-- angular js file -->
+    <script src="/javascript/homepage.js"></script>
+
 </html>

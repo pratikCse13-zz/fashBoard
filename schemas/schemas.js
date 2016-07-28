@@ -1,6 +1,9 @@
 var express = require('express');
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
+var db = "mongodb://pratik:qwerty@ds029725.mlab.com:29725/fashboard";
+
+var connection = mongoose.createConnection(db);
 
 var ObjectId = Schema.ObjectId;
 var feedStructure = new Schema({
@@ -11,11 +14,12 @@ var feedStructure = new Schema({
 
 var userStructure = new Schema({
 	name : String,
-	userName : String,
+	emailId : String,
 	password : String,
 
 });
 
-module.exports.feedschema = mongoose.model('feed',feedStructure);
+module.exports.feedschema = connection.model('feed',feedStructure);
+module.exports.userSchema = connection.model('user',userStructure);
 
 

@@ -6,7 +6,9 @@ var route = express.Router();
 var mongoose = require('mongoose');
 var schemas = require('../schemas/schemas');
 var feedSchema = schemas.feedschema;
-var db = 'mongodb://localhost/finalDB'; 
+var db = 'mongodb://pratik:qwerty@ds029725.mlab.com:29725/fashboard'; 
+
+mongoose.createConnection(db);
 
 
 var upload = multer({dest : 'public/uploads/'});
@@ -15,12 +17,14 @@ route.post('/uploads',upload.any(),function(req,res){
 		console.log(req.files.imageuploader2);
 });
 
-mongoose.connect(db);
 
+route.get('/trial',function(req,res){
+	res.sendFile(path.resolve(__dirname + "/../public/views/trial.html"));
+});
 
 
 route.get('/',function(req,res){
-	res.sendFile(path.resolve((__dirname+'/../public/views/homepage.html')));
+	res.sendFile(path.resolve((__dirname+'/../public/views/homePage.html')));
 });	
 
 route.post('/userFeeds', function(req,res) {
@@ -74,6 +78,10 @@ route.get('/fetchdb',function(req,res){
 			res.json(feeds);
 		}
 	});
+});
+
+route.get('/userHome',function(req,res){
+	res.sendFile(path.resolve((__dirname+'/../public/views/userHome.html')));
 });
 
 

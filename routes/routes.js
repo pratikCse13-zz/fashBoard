@@ -17,6 +17,9 @@ route.post('/uploads',upload.any(),function(req,res){
 		console.log(req.files.imageuploader2);
 });
 
+route.get('/navbar',function(req,res){
+	res.sendFile(path.resolve(__dirname+'/../public/views/navbar.html'));
+});
 
 route.get('/trial',function(req,res){
 	res.sendFile(path.resolve(__dirname + "/../public/views/trial.html"));
